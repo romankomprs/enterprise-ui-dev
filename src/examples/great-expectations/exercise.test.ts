@@ -12,12 +12,9 @@ import { KanbanBoard } from '$lib/kanban-board';
  * toThrowError: https://vitest.dev/api/expect.html#tothrowerror
  */
 
-it.todo(
-  'should pass if the two numbers would add up correctly in a language other than JavaScript',
-  () => {
-    expect(0.2 + 0.1).toEqual(0.3);
-  },
-);
+it('should pass if the two numbers would add up correctly in a language other than JavaScript', () => {
+  expect(0.2 + 0.1).toBeCloseTo(0.3);
+});
 
 describe('createPerson', () => {
   it.todo('should create an instance of a person', () => {
@@ -32,12 +29,15 @@ describe('Kanban Board', () => {
     const board = new KanbanBoard('Things to Do');
     expect.hasAssertions();
     // Verify that board.statuses contains "Backlog".
+    expect(board.statuses).toContain('Backlog');
   });
 
-  it.todo('should *not* include "Bogus" in board.statuses', () => {
+  // it.todo('should *not* include "Bogus" in board.statuses', () => {
+  it('should *not* include "Bogus" in board.statuses', () => {
     const board = new KanbanBoard('Things to Do');
     expect.hasAssertions();
     // Verify that board.statuses does not contain "Bogus".
+    expect(board.statuses).not.toContain('Bogus');
   });
 
   it.todo(
